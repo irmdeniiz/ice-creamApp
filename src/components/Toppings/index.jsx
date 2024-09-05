@@ -12,10 +12,10 @@ const Toppings = () => {
   }, []);
 
   const handleChange = (item) => {
-    // elemen sepette var mı?
+    
     const found = basket.find((i) => i.id === item.id);
 
-    // varsa kaldır yoksa ekle
+   
     found
       ? setBasket(basket.filter((i) => i.id !== item.id))
       : setBasket([...basket, item]);
