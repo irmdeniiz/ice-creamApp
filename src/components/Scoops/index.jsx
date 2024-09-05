@@ -14,17 +14,17 @@ const Scoops = () => {
   }, []);
 
   const addToBasket = (item) => {
-    // sepette elemanı ara
+   
     const found = basket.find((i) => i.id === item.id);
 
     if (found) {
-      // güncel nesneyi oluştur
+     
       const updated = { ...found, amount: found.amount + 1 };
 
-      // dizideki eski elemanı güncelle
+     
       const temp = basket.map((i) => (i.id === found.id ? updated : i));
 
-      // state'i güncelle
+      
       setBasket(temp);
     } else {
       setBasket([...basket, { ...item, amount: 1 }]);
@@ -32,25 +32,25 @@ const Scoops = () => {
   };
 
   const removeFromBasket = (id) => {
-    // elemanı sepette bul
+   
     const found = basket.find((i) => i.id === id);
 
     if (found.amount > 1) {
-      // güncel nesneyi oluştur
+      
       const updated = { ...found, amount: found.amount - 1 };
 
-      // dizideki eski elemanı güncelle
+      
       const temp = basket.map((i) => (i.id === found.id ? updated : i));
 
-      // state'i güncelle
+      
       setBasket(temp);
     } else {
-      // miktar 1 ise direkt sepetten sil
+     
       setBasket(basket.filter((i) => i.id !== id));
     }
   };
 
-  // toplam fiyatı hesapla
+ 
   const total = basket.reduce((total, i) => total + i.amount * 20, 0);
 
   console.log(basket);
